@@ -57,11 +57,8 @@ impl ContextData {
 }
 
 enum Action {
-    /// Create the subresources, this includes spawning `n` pods with Echo service
     Create,
-    /// Delete all subresources created in the `Create` phase
     Delete,
-    /// This `Echo` resource is in desired state and requires no actions to be taken
     NoOp,
 }
 
@@ -145,7 +142,6 @@ pub enum Error {
         #[from]
         source: kube::Error,
     },
-    /// Error in user input or Echo resource definition, typically missing fields.
     #[error("Invalid CRD: {0}")]
     UserInputError(String),
 }
