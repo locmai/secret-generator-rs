@@ -1,0 +1,60 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: secretgenerators.locmai.dev
+spec:
+  group: locmai.dev
+  names:
+    categories: []
+    kind: SecretGenerator
+    plural: secretgenerators
+    shortNames: []
+    singular: secretgenerator
+  scope: Namespaced
+  versions:
+    - additionalPrinterColumns: []
+      name: v1alpha1
+      schema:
+        openAPIV3Schema:
+          description: "Auto-generated derived type for SecretGeneratorSpec via `CustomResource`"
+          properties:
+            spec:
+              properties:
+                backend:
+                  default: Kubernetes
+                  type: string
+                name:
+                  type: string
+                secrets:
+                  items:
+                    properties:
+                      lenght:
+                        format: int32
+                        type: integer
+                      name:
+                        type: string
+                    required:
+                      - lenght
+                      - name
+                    type: object
+                  type: array
+              required:
+                - name
+                - secrets
+              type: object
+            status:
+              nullable: true
+              properties:
+                condition:
+                  default: Not ready
+                  type: string
+              type: object
+          required:
+            - spec
+          title: SecretGenerator
+          type: object
+      served: true
+      storage: true
+      subresources:
+        status: {}
