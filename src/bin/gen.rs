@@ -18,7 +18,7 @@ async fn main() -> anyhow::Result<()> {
     let crd_yaml: String = serde_yaml::to_string(&crd::SecretGenerator::crd())?;
     
     #[allow(unused_imports)]
-    fs::write("./build/crd.yaml", crd_yaml)?;
+    fs::write("./manifests/base/crd.yaml", crd_yaml)?;
     info!("CRD manifests generated.");
     Ok(())
 }

@@ -35,7 +35,7 @@ pub async fn deploy(
     for secret in secrets {
         let gen_secret: String = thread_rng()
             .sample_iter(&Alphanumeric)
-            .take(secret.lenght.try_into().unwrap())
+            .take(secret.length.try_into().unwrap())
             .map(char::from)
             .collect();
 

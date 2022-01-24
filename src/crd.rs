@@ -24,7 +24,7 @@ fn default_status_value() -> String {
 #[derive(Deserialize, Serialize, Clone, Debug, JsonSchema)]
 pub struct DeclaredSecretSpec {
     pub name: String,
-    pub lenght: i32,
+    pub length: i32,
 }
 
 // SecretGenerator resource specification
