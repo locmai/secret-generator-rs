@@ -1,0 +1,4 @@
+resources:
+- base/crd.yaml
+- base/dep.yaml
+- base/rbac.yaml

@@ -38,9 +38,8 @@ pub async fn deploy(
             .take(secret.lenght.try_into().unwrap())
             .map(char::from)
             .collect();
-        let gen_secret_base64 = base64::encode(&gen_secret);
-        
-        let gen_secret_base64_byte_string = ByteString((&gen_secret_base64.as_bytes()).to_vec());
+
+        let gen_secret_base64_byte_string = ByteString((&gen_secret.as_bytes()).to_vec());
         secrets_data.insert(secret.name.try_into().unwrap(), gen_secret_base64_byte_string);
     };
 
