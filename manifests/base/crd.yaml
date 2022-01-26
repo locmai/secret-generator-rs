@@ -9,11 +9,20 @@ spec:
     categories: []
     kind: SecretGenerator
     plural: secretgenerators
-    shortNames: []
+    shortNames:
+      - sg
     singular: secretgenerator
   scope: Namespaced
   versions:
-    - additionalPrinterColumns: []
+    - additionalPrinterColumns:
+        - description: condition of the secret-generator
+          jsonPath: ".status.condition"
+          name: Condition
+          type: string
+        - description: last updated timestamp of the secret-generator
+          jsonPath: ".status.last_updated"
+          name: Last updated
+          type: date
       name: v1alpha1
       schema:
         openAPIV3Schema:

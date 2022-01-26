@@ -7,11 +7,12 @@ pub async fn add(client: Client, name: &str, namespace: &str) -> Result<SecretGe
     let api: Api<SecretGenerator> = Api::namespaced(client, namespace);
     let finalizer: Value = json!({
         "metadata": {
-            "finalizers": ["secretgenerators.locmai.dev"]
-        }
+            "finalizers": ["secretgenerators.locmai.dev"],
+        },
     });
 
     let patch: Patch<&Value> = Patch::Merge(&finalizer);
+
     Ok(api.patch(name, &PatchParams::default(), &patch).await?)
 }
 
