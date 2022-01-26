@@ -1,8 +1,14 @@
 gen:
 	cargo run --bin gen
 
+gen-preview:
+	cargo run --bin gen-preview
+
 deploy:
 	kubectl apply -k ./manifests
+
+undeploy:
+	kubectl delete -k ./manifests
 
 run:
 	cargo run --bin secret-generator-rs

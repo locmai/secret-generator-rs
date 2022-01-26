@@ -1,6 +1,6 @@
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
-
+// use chrono::{DateTime, Utc};
 #[allow(unused_imports)]
 use apiexts::CustomResourceDefinition;
 #[allow(unused_imports)]
@@ -29,8 +29,16 @@ pub struct DeclaredSecretSpec {
 
 // SecretGenerator resource specification
 #[derive(CustomResource, Deserialize, Serialize, Clone, Debug, JsonSchema)]
-#[kube(group = "locmai.dev", version = "v1alpha1", kind = "SecretGenerator", namespaced)]
-#[kube(status = "SecretGeneratorStatus")]
+#[kube(
+    group = "locmai.dev",
+    version = "v1alpha1",
+    kind = "SecretGenerator",
+    plural = "secretgenerators",
+    namespaced,
+    status = "SecretGeneratorStatus",
+    shortname = "sg",
+    printcolumn = r#"{"name":"Condition", "type":"string", "description":"condition of the secret-generator", "jsonPath":".status.condition"}, {"name":"Last updated", "type":"date", "description":"last updated timestamp of the secret-generator", "jsonPath":".status.last_updated"}"#
+)]
 pub struct SecretGeneratorSpec {
     pub name: String,
 
@@ -39,8 +47,11 @@ pub struct SecretGeneratorSpec {
     pub backend: String,
 }
 
-#[derive(Deserialize, Serialize, Clone, Debug, Default, JsonSchema)]
+#[derive(Deserialize, Serialize, Clone, Debug, JsonSchema)]
 pub struct SecretGeneratorStatus {
     #[serde(default = "default_status_value")]
-    condition: String,
+    pub condition: String,
+
+    // #[schemars(schema_with = "set_datetime_schema")]
+    // pub last_updated: Option<DateTime<Utc>>
 }
