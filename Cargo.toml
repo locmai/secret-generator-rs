@@ -26,3 +26,5 @@ rand = "0.8.4"
 thiserror = "1" # Custom Error definitions and convenient error mappings
 byte_string = "1.0.0"
 base64 = "0.13.0"
+hashicorp_vault = "2.1.0"
+url = "2.2.2"

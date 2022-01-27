@@ -12,7 +12,7 @@ Must-have items:
 - [x] Update document
 - [x] Makefile
 - [ ] Add tests
-
+- [ ] Export metrics: secrets_count and secret_created_date
 
 Nice-to-have items:
 - [ ] More schema validations
