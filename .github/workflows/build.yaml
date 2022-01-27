@@ -16,6 +16,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag docker.pkg.github.com/${{ github.repository }}/secret-generator-rs:${GITHUB_REF/refs\/tags\//}
     - name: Login to Registry
-      run: docker login docker.pkg.github.com -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      run: docker login ghcr.io -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
     - name: Publish to Registry
-      run: docker push docker.pkg.github.com/${{ github.repository }}/secret-generator-rs:${GITHUB_REF/refs\/tags\//}
+      run: docker push ghcr.io/${{ github.repository }}/secret-generator-rs:${GITHUB_REF/refs\/tags\//}
+
