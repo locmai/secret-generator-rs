@@ -36,6 +36,7 @@ pub struct DeclaredSecretSpec {
     plural = "secretgenerators",
     namespaced,
     status = "SecretGeneratorStatus",
+    category = "secretgenerator",
     shortname = "sg",
     printcolumn = r#"{"name":"Condition", "type":"string", "description":"condition of the secret-generator", "jsonPath":".status.condition"}, {"name":"Last updated", "type":"date", "description":"last updated timestamp of the secret-generator", "jsonPath":".status.last_updated"}"#
 )]

@@ -6,7 +6,8 @@ metadata:
 spec:
   group: locmai.dev
   names:
-    categories: []
+    categories:
+      - secretgenerator
     kind: SecretGenerator
     plural: secretgenerators
     shortNames:
